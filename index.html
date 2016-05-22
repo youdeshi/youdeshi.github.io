@@ -53,7 +53,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://github.xuliang-pro.com"></form>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/22/How-to-use-Hexo-in-Github-Pages-1/">How to use Hexo in Github Page(1) - Setup blog generator</a>
+      <a class="article-title" href="/2016/05/22/How-to-use-Hexo-in-Github-Pages-1/">How to use Hexo in Github Pages(1)</a>
     </h1>
   
 
@@ -86,74 +86,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-Create-repositories-in-Github"><a href="#1-Create-repositories-in-Github" class="headerlink" title="1. Create repositories in Github."></a>1. Create repositories in Github.</h3><ul>
-<li>Create <em><__username__>.github.io</__username__></em> repository for the Github Pages.</li>
-<li>Create another repository as the blog generator, I recommend using <em><__username__>.github.io.hexo</__username__></em> in this case.</li>
+        <h1 id="Setup-blog-generator"><a href="#Setup-blog-generator" class="headerlink" title="Setup blog generator"></a>Setup blog generator</h1><h3 id="1-Create-repositories-in-Github"><a href="#1-Create-repositories-in-Github" class="headerlink" title="1. Create repositories in Github."></a>1. Create repositories in Github.</h3><ul>
+<li>Create <em><username>.github.io</username></em> repository for the Github Pages.</li>
+<li>Create another repository as the blog generator, I recommend using <em><username>.github.io.hexo</username></em> in this case.</li>
 </ul>
-<h3 id="2-Install-Hexo-locally"><a href="#2-Install-Hexo-locally" class="headerlink" title="2. Install Hexo locally"></a>2. Install Hexo locally</h3><p>Make should you have NPM and Git installed in your Linux/Mac machine.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h3 id="3-Create-a-Hexo-project"><a href="#3-Create-a-Hexo-project" class="headerlink" title="3. Create a Hexo project"></a>3. Create a Hexo project</h3><p>Create a new fold to hold the Hexo code. The fold name does not matter, I use <strong>blog-generator</strong> in this case.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog-generator</span><br><span class="line">$ <span class="built_in">cd</span> blog-generator</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-Optional-Run-a-test-server-to-validate-Hexo-works"><a href="#3-1-Optional-Run-a-test-server-to-validate-Hexo-works" class="headerlink" title="3.1. (Optional) Run a test server to validate Hexo works"></a>3.1. (Optional) Run a test server to validate Hexo works</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="2-Install-Hexo-locally"><a href="#2-Install-Hexo-locally" class="headerlink" title="2. Install Hexo locally"></a>2. Install Hexo locally</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>Make should you have NPM and Git installed in your Linux/Mac machine.</p>
+<h3 id="3-Create-a-Hexo-project"><a href="#3-Create-a-Hexo-project" class="headerlink" title="3. Create a Hexo project"></a>3. Create a Hexo project</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog-generator</span><br><span class="line">$ <span class="built_in">cd</span> blog-generator</span><br></pre></td></tr></table></figure>
+<p>Create a new fold to hold the Hexo code. The fold name does not matter, I use <strong>blog-generator</strong> in this case.</p>
 <h3 id="4-Install-deployer-for-git"><a href="#4-Install-deployer-for-git" class="headerlink" title="4. Install deployer for git"></a>4. Install deployer for git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -S hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<h3 id="5-Update-Hexo-config"><a href="#5-Update-Hexo-config" class="headerlink" title="5. Update Hexo config"></a>5. Update Hexo config</h3><p>Use any editor or <strong>vi</strong> to update the <strong>_config.yml</strong>, you could change a bunch of settings within this file. The most important configuration is the <strong><em>deploy</em></strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br><span class="line">~~~~~~~~~~~~~~~~~~ _config.yml ~~~~~~~~~~~~~~~~~~</span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="5-Update-Hexo-config"><a href="#5-Update-Hexo-config" class="headerlink" title="5. Update Hexo config"></a>5. Update Hexo config</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br><span class="line">~~~~~~~~~~~~~~~~~~ _config.yml ~~~~~~~~~~~~~~~~~~</span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>Use any editor or <strong>vi</strong> to update the <strong>config.yml</strong>, you could change a bunch of settings within this file. The most important configuration is the <strong><em>deploy</em></strong></p>
 <h3 id="6-Deploy-blog-to-Github-Pages"><a href="#6-Deploy-blog-to-Github-Pages" class="headerlink" title="6. Deploy blog to Github Pages!"></a>6. Deploy blog to Github Pages!</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>The hexo has generated the blog files, and push all of them to your <em><__username__>.github.io</__username__></em> repository.<br>Open a browser with the URL _<_username_>.github.io_ to see your Github Pages.</_username_></p>
+<p>The hexo has generated the blog files, and push all of them to your <em><username>.github.io</username></em> repository.<br>Open a browser with the URL <em><username>.github.io</username></em> to see your Github Pages.</p>
 <h3 id="7-Add-blog-generator-to-Git"><a href="#7-Add-blog-generator-to-Git" class="headerlink" title="7. Add blog generator to Git"></a>7. Add blog generator to Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git add ./</span><br><span class="line">$ git commit -m <span class="string">'some comments'</span></span><br><span class="line">$ git remote add origin https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.hexo.git</span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.xuliang-pro.com/2016/05/22/How-to-use-Hexo-in-Github-Pages-1/" data-id="cioj17gsk0000u35v9ogzy3dc" class="article-share-link">Share</a>
+      <a data-url="http://github.xuliang-pro.com/2016/05/22/How-to-use-Hexo-in-Github-Pages-1/" data-id="cioj1m8n10000vm5vvqw8st3g" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo-Github/">Hexo Github</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/22/hello-world/" class="article-date">
-  <time datetime="2016-05-22T19:16:36.548Z" itemprop="datePublished">2016-05-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/22/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://github.xuliang-pro.com/2016/05/22/hello-world/" data-id="cioj17gsu0001u35v59snjqua" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -171,7 +125,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo-Github/">Hexo Github</a></li></ul>
     </div>
@@ -190,7 +144,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
     </div>
@@ -200,16 +154,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2016/05/22/How-to-use-Hexo-in-Github-Pages-1/">How to use Hexo in Github Page(1) - Setup blog generator</a>
-          </li>
-        
-          <li>
-            <a href="/2016/05/22/hello-world/">Hello World</a>
+            <a href="/2016/05/22/How-to-use-Hexo-in-Github-Pages-1/">How to use Hexo in Github Pages(1)</a>
           </li>
         
       </ul>
