@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>How to install Node.js in AWS | Liang Xu&#39;s Note and Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Make sure you have an EC2 instance running before this step.
+Connect to your Amazon EC2 Linux boxOn windows, use Putty to connect to Amazon EC2 Linux box.
+On Linux/Mac, use ssh command to connect.
+12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to install Node.js in AWS">
+<meta property="og:url" content="http://youdeshi.github.io/2016/05/24/How-to-install-nodejs-in-AWS/index.html">
+<meta property="og:site_name" content="Liang Xu's Note and Blog">
+<meta property="og:description" content="Make sure you have an EC2 instance running before this step.
+Connect to your Amazon EC2 Linux boxOn windows, use Putty to connect to Amazon EC2 Linux box.
+On Linux/Mac, use ssh command to connect.
+12">
+<meta property="og:updated_time" content="2016-05-24T01:29:16.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to install Node.js in AWS">
+<meta name="twitter:description" content="Make sure you have an EC2 instance running before this step.
+Connect to your Amazon EC2 Linux boxOn windows, use Putty to connect to Amazon EC2 Linux box.
+On Linux/Mac, use ssh command to connect.
+12">
+  
+    <link rel="alternate" href="/atom.xml" title="Liang Xu&#39;s Note and Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Liang Xu&#39;s Note and Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://youdeshi.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-How-to-install-nodejs-in-AWS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/24/How-to-install-nodejs-in-AWS/" class="article-date">
+  <time datetime="2016-05-24T01:07:15.000Z" itemprop="datePublished">2016-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      How to install Node.js in AWS
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>Make sure you have an EC2 instance running before this step.</p>
+<h3 id="Connect-to-your-Amazon-EC2-Linux-box"><a href="#Connect-to-your-Amazon-EC2-Linux-box" class="headerlink" title="Connect to your Amazon EC2 Linux box"></a>Connect to your Amazon EC2 Linux box</h3><p>On windows, use Putty to connect to Amazon EC2 Linux box.</p>
+<p>On Linux/Mac, use <em>ssh</em> command to connect.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod 400 &lt;your key file&gt;</span><br><span class="line">$ sudo ssh -i &lt;your key file&gt; ec2-user@&lt;your public DNS&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Switch-to-the-home-folder-and-update-the-Amazon-system"><a href="#Switch-to-the-home-folder-and-update-the-Amazon-system" class="headerlink" title="Switch to the home folder and update the Amazon system"></a>Switch to the home folder and update the Amazon system</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /home/ec2-user/</span><br><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+<h3 id="Install-GCC-Make-openssl-devel-and-git"><a href="#Install-GCC-Make-openssl-devel-and-git" class="headerlink" title="Install GCC++, Make, openssl-devel, and git"></a>Install GCC++, Make, openssl-devel, and git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install gcc-c++ make openssl-devel git</span><br></pre></td></tr></table></figure>
+<h3 id="Download-Node-js-from-Github"><a href="#Download-Node-js-from-Github" class="headerlink" title="Download Node.js from Github"></a>Download Node.js from Github</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git://github.com/nodejs/node.git</span><br><span class="line">$ <span class="built_in">cd</span> node</span><br></pre></td></tr></table></figure>
+<h3 id="Switch-to-LTS-version-click-HERE-to-check-current-LTS-version"><a href="#Switch-to-LTS-version-click-HERE-to-check-current-LTS-version" class="headerlink" title="Switch to LTS version, click HERE to check current LTS version."></a>Switch to LTS version, click <a href="https://nodejs.org/en/" target="_blank" rel="external">HERE</a> to check current LTS version.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout v4.4.4</span><br></pre></td></tr></table></figure>
+<h3 id="Compile-Node-js-take-around-10-minutes"><a href="#Compile-Node-js-take-around-10-minutes" class="headerlink" title="Compile Node.js, take around 10 minutes."></a>Compile Node.js, take around 10 minutes.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+<h3 id="Install-NPM"><a href="#Install-NPM" class="headerlink" title="Install NPM"></a>Install NPM</h3><p>Before installing any node modules, you need to add path where those modules should get installed. To do so, you need to edit sudoers file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ sudo su</span><br><span class="line">$ vi /etc/sudoers</span><br><span class="line"></span><br><span class="line"><span class="comment"># once VI is opened, find this line.</span></span><br><span class="line"><span class="comment"># Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin</span></span><br><span class="line"><span class="comment"># press 'i' key to go in insert mode and at the end of this line add following.</span></span><br><span class="line"><span class="comment"># :/usr/local/bin</span></span><br><span class="line"><span class="comment"># In order to save your changes, press ESC and type 'wq!' and hit ENTER to exit.</span></span><br><span class="line"></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line">$ <span class="built_in">cd</span> /home/ec2-user/</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/isaacs/npm.git</span><br><span class="line">$ <span class="built_in">cd</span> npm</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://youdeshi.github.io/2016/05/24/How-to-install-nodejs-in-AWS/" data-id="ciokrlmp70000fn5vrhq40up6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AWS/">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/23/How-to-use-Hexo-in-Github-Pages-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How to use Hexo in Github Pages(2)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AWS/" style="font-size: 10px;">AWS</a> <a href="/tags/Github/" style="font-size: 20px;">Github</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/24/How-to-install-nodejs-in-AWS/">How to install Node.js in AWS</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/23/How-to-use-Hexo-in-Github-Pages-2/">How to use Hexo in Github Pages(2)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/22/How-to-use-Hexo-in-Github-Pages-1/">How to use Hexo in Github Pages(1)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Liang Xu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
